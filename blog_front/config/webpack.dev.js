@@ -38,7 +38,7 @@ module.exports = {
           use:["style-loader","css-loader"],
         },
         {
-          test:/\.(jpg|png|gif|ttf|woff|eot|svg)$/,
+          test:/\.(jpg|png|gif)$/,
           use:["url-loader"],
         },
         {
@@ -50,8 +50,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],//省略后缀名
     alias: {
-        "vue": "vue/dist/vue.js",
-        "@":path.join(__dirname,"../src")
+        "vue": "vue/dist/vue.js"
     }
   },
   devtool: config.dev.souceMap, //开发环境推荐

@@ -1,16 +1,17 @@
 module.exports = {
-    sql_config: {
+    sql_config: {// 线上环境
         host: "101.201.235.23",
         user: "root",
-        password: "dig?fuckdang5",
+        password: "zyp0421",
         port: 3306,
-        database: "nodetest"
+        database: "cyg_web_new"
     },
-    dev_db: {
+    dev_db: {// 开发环境
         host: "127.0.0.1",
         user: "root",
-        password: "dig?fuckdang5",
+        password: "zyp0421",
         port: 3306,
-        database: "nodetest"
+        // database: "textnode",
+        database: "blog_sql"
     }
 }

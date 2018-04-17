@@ -27,6 +27,7 @@ const readHandle=(sql)=>{
   return new Promise((resolve,reject)=>{
     query(sql).then((data)=>{
         // 转换时间；
+        console.log(data)
         if(data[0].time!=undefined){
           data=data.map((i)=>{
             i.time=moment(i.time).format('YYYY-MM-DD HH:mm:ss')

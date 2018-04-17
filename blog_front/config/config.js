@@ -35,7 +35,7 @@ module.exports = {
     souceMap:"cheap-module-eval-source-map",
     proxyTable: {},
     middleWare:function(app){
-        app.get("/api",function(req,res,next){// 开接口
+        app.get("/api",function(req,res,next){
           res.send("1234")
         })
     }

@@ -4,13 +4,13 @@ module.exports = {
         user: "root",
         password: "dig?fuckdang5",
         port: 3306,
-        database: "nodetest"
+        database: "blog_sql"
     },
     dev_db: {
         host: "127.0.0.1",
         user: "root",
         password: "dig?fuckdang5",
         port: 3306,
-        database: "nodetest"
+        database: "blog_sql"
     }
 }

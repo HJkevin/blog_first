@@ -16,13 +16,13 @@ console.log(path.resolve('./'));
 //创建服务
 var httpServer = http.createServer(processRequest);
 
-var port ="9000";
+var port = "9000";
 
 //指定一个监听的接口
-httpServer.listen(port, function() {
+httpServer.listen(port, function () {
     console.log(`app is running at port:${port}`);
     console.log(`url: http://localhost:${port}`);
-    cp.exec(`explorer http://localhost:${port}`, function() {});
+    cp.exec(`explorer http://localhost:${port}`, function () { });
 });
 
 //响应请求的函数
@@ -123,7 +123,7 @@ function processRequest(request, response) {
             //建立流对象，读文件
             var stream = fs.createReadStream(filePath);
             //错误处理
-            stream.on('error', function() {
+            stream.on('error', function () {
                 response.writeHead(500, { "content-type": contentType });
                 response.end("<h1>500 Server Error</h1>");
             });

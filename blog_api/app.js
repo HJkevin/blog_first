@@ -3,8 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+<<<<<<< HEAD
 //var bodyParser=require("body-parser")
 
+=======
+var bodyParser = require("body-parser")
+>>>>>>> ee0599be9563a84014d0472a8ad05da536f96e7a
 
 
 var app = express();
@@ -18,10 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(bodyParser());
 =======
 //app.use(bodyParser());
 >>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
+=======
+app.use(bodyParser());
+>>>>>>> ee0599be9563a84014d0472a8ad05da536f96e7a
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -34,6 +42,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // 接口
+<<<<<<< HEAD
 
 
 var apiBackUser=require("./api/back/user.js")
@@ -43,14 +52,18 @@ app.use('/api/back/class', apiBackClass);
 
 
 
+=======
+var apiUser = require("./api/back/user.js")
+app.use('/api/back/user', apiUser);
+>>>>>>> ee0599be9563a84014d0472a8ad05da536f96e7a
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

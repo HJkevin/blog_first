@@ -14,7 +14,12 @@
     "morgan": "~1.9.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "body-parser": "^1.18.2",
+=======
+    "comment": "^0.0.2",
+    "gulp": "^3.9.1",
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
     "has-own-property-x": "^3.2.0",
     "moment": "^2.22.1",
     "mysql": "^2.15.0"

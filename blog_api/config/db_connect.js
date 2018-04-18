@@ -3,7 +3,11 @@ const mysql = require("mysql");
 const moment = require('moment'); //数据库时间转js时间格式
 
 //// promise
+<<<<<<< HEAD
 let connection = mysql.createPool(config.dev_db);
+=======
+let connection=mysql.createPool(config.dev_config)
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
 
 // 正常数据库操作
 const query = (sql) => {

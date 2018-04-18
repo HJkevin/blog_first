@@ -89,7 +89,7 @@ module.exports = {
     open:config.dev.autoOpenBrowser,
     watchContentBase: true,
     compress: true,
-    before:config.dev.middleWare,
+    before:config.dev.middle.Ware,
     proxy:config.dev.proxyTable
   }
 }

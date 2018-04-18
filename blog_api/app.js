@@ -3,7 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser=require("body-parser")
+//var bodyParser=require("body-parser")
+
 
 
 var app = express();
@@ -16,7 +17,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+<<<<<<< HEAD
 app.use(bodyParser());
+=======
+//app.use(bodyParser());
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
 
 app.use(express.static(path.join(__dirname, 'public')));
 

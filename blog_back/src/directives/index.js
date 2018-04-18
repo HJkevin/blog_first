@@ -22,7 +22,13 @@ var focus={
       if(request){
         clearP()
         let $p=document.createElement("p")
+<<<<<<< HEAD
         $p.setAttribute("class","p")
+=======
+        $p.style.color='#f00';
+        $p.style.textAlign='center';
+        $p.style.fontSize='14px'
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
         $p.innerHTML="此项不能为空"
         el.parentNode.appendChild($p)
       }else{
@@ -35,6 +41,17 @@ var focus={
       if(!reg.test(value)){
         // el.parentNode
         let $p=document.createElement("p")
+<<<<<<< HEAD
+=======
+        
+		// margin: 3px auto;
+		// height: 20px;
+		// line-height: 20px;
+		// color: #f00;
+        $p.style.color='#f00';
+        $p.style.textAlign='center';
+        $p.style.fontSize='14px'
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
         $p.setAttribute("class","p")
         $p.innerHTML=msg
         el.parentNode.appendChild($p)

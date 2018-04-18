@@ -3,10 +3,17 @@
     <ul id="from">
       <li><h4 id="pleaselogin">请登陆</h4></li>
       <li>
+<<<<<<< HEAD
 					<input type="text" id="user" v-model.lazy="username.value"  placeholder="请输入用户名" v-focus="username" @blur="change(username)">
       </li>
       <li>
           <input type="password" id="psw" v-model.lazy="password.value" placeholder="请输入密码" v-focus="password" @blur="change(password)">
+=======
+		<input type="text" id="user" v-model.lazy="username.value"  placeholder="请输入用户名" v-focus="username" @blur="change(username)">
+      </li>
+      <li>
+        <input type="password" id="psw" v-model.lazy="password.value" placeholder="请输入密码" v-focus="password" @blur="change(password)">
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
       </li>
       <el-button type="success" id="log" @click="submit">登陆</el-button>
     </ul>
@@ -23,7 +30,11 @@ export default {
 				value:"",
 				reg:/^[a-zA-Z]{4,12}$/,
 				msg:"您输入的用户名格式不对",
+<<<<<<< HEAD
 				state:false
+=======
+				state:false//状态码
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
 			},
 			password:{
 				value:"",
@@ -39,6 +50,7 @@ export default {
 			data.state=true
 		},
     submit(){
+<<<<<<< HEAD
 
 			if(this.username.value&&this.password.value){
 				this.axios.post("/api/back/user/login",{
@@ -70,6 +82,34 @@ export default {
 			// if(username.value{
 
 			// }
+=======
+		if(this.username.value&&this.password.value){//当用户名和密码都不为空时
+			this.axios.post("/api/back/user/login",{//axios请求数据
+				username:this.username.value,
+				password:this.password.value
+			}).then((data)=>{//数据请求成功
+				switch(data.data.code){//判断数据的code码
+					case "1001":{//调用elementui方法
+							this.$message({
+							message: '恭喜你，登录成功',
+							type: 'success'
+						});
+						sessionStorage.setItem("userId",data.config.data.username)//本地存储
+						sessionStorage.setItem("userName",data.config.data)
+						this.$router.push("/back/main")//跳转路由
+					} break;
+					default:{
+						this.$message({
+							message: data.data.msg,
+							type: 'error'
+						});
+					}
+				}
+			})
+		}else{
+			alert("请填写用户名与密码")
+		}
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
     }
   }
 
@@ -79,6 +119,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #from {
+	list-style:none;
 		width: 400px;
 		height: 300px;
 		border: 1px solid #ccc;
@@ -122,6 +163,7 @@ export default {
 		line-height: 20px;
 		color: #f00;
 	}
+<<<<<<< HEAD
 
 	#log {
 		width: 80%;
@@ -136,4 +178,18 @@ export default {
 		padding: 20px 0;
 	}
 
+=======
+
+	#log {
+		width: 80%;
+		display: block;
+		margin: 20px auto;
+		background:orange;
+		border:0;
+		outline: none;
+	}
+
+
+
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
 </style>

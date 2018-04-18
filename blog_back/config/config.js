@@ -34,7 +34,11 @@ module.exports = {
     assetsPublicPath: '/',
     souceMap:"cheap-module-eval-source-map",
     proxyTable: {
+<<<<<<< HEAD
       "/api":"http://localhost:9999/"
+=======
+      "/api":"http://localhost:9999/" //解决了跨域问题
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
     },
     middleWare:function(app){
         app.get("/api",function(req,res,next){

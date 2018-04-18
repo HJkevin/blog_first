@@ -4,9 +4,13 @@
         <template slot="title"><i class="el-icon-message"></i>文章操作</template>
           <el-menu-item index="1-1"><router-link to="/back/add_article">添加文章</router-link></el-menu-item>
           <el-menu-item index="1-2"><router-link to="/back/article_list">文章列表</router-link></el-menu-item>
+<<<<<<< HEAD
         
       </el-submenu>
       
+=======
+      </el-submenu>
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
       <el-submenu index="2">
        <template slot="title"><i class="el-icon-message"></i>分类操作</template>
        <el-menu-item index="2-1"><router-link to="/back/add_one_class">一级分类添加</router-link></el-menu-item>
@@ -34,6 +38,7 @@ export default {
     return {
         
     }
+<<<<<<< HEAD
   },
     methods: {
       handleOpen(key, keyPath) {
@@ -43,6 +48,9 @@ export default {
         console.log(key, keyPath);
       }
     }
+=======
+  }
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
 }
 </script>
 

@@ -5,7 +5,13 @@
 
     export default{
       data(){
+<<<<<<< HEAD
         return {}
+=======
+        return {
+          
+        }
+>>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
       }
     }
 </script>

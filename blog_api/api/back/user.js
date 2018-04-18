@@ -17,14 +17,15 @@ router.post('/login', function (req, res, next) {
     if (hasOwnProperty(arg, "username") && hasOwnProperty(arg, "password")) {
         let { username, password } = arg
         var testUser = `select * from user where name='${username}'`
-        console.log(testUser)
+        // console.log(testUser)
         readHandle(testUser).then((data) => {
             console.log(data)
             if (data.length > 0) {
                 if (data[0].password == password) {
                     res.send({
                         code: "1001",
-                        msg: "登录成功"
+                        msg: "登录成功",
+                        data:data[0]
                     })
                 } else {
                     res.send({

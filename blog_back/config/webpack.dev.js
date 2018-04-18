@@ -1,7 +1,3 @@
-
-// console.log(__dirname)
-// console.log(__filename)
-// console.log(process.cwd())
 var path=require("path")
 var webpack=require("webpack")
 var htmlWebpackPlugin=require("html-webpack-plugin")
@@ -27,7 +23,6 @@ module.exports = {
             loader:"babel-loader",
             options:config.babel
           }],
-          
         },
         {
           test:/\.vue$/,
@@ -38,7 +33,7 @@ module.exports = {
           use:["style-loader","css-loader"],
         },
         {
-          test:/\.(jpg|png|gif)$/,
+          test:/\.(jpg|png|gif|ttf|woff|eot|svg)$/,
           use:["url-loader"],
         },
         {
@@ -50,7 +45,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],//省略后缀名
     alias: {
-        "vue": "vue/dist/vue.js"
+        "vue": "vue/dist/vue.js",
+        "@": path.join(__dirname, '../src')
     }
   },
   devtool: config.dev.souceMap, //开发环境推荐

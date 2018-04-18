@@ -7,7 +7,9 @@
 <script>
   export default{
       data(){
-        return {name:"zhangsan"}
+        return {
+          
+        }
       }
   }
 </script>

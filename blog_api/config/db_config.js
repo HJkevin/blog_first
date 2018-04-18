@@ -12,5 +12,5 @@ module.exports = {
         password: "dig?fuckdang5",
         port: 3306,
         database: "blog_sql"
-    }
+
 }

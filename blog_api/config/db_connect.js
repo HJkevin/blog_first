@@ -3,7 +3,7 @@ const mysql=require("mysql")
 const moment = require('moment'); //数据库时间转js时间格式
 
 //// promise
-let connection=mysql.createPool(config.dev_config)
+let connection=mysql.createPool(config.dev_db)
 
 // 正常数据库操作
 const query=(sql)=>{
@@ -27,7 +27,8 @@ const readHandle=(sql)=>{
   return new Promise((resolve,reject)=>{
     query(sql).then((data)=>{
         // 转换时间；
-        if(data[0].time!=undefined){
+      
+        if(data.length>0&&data[0].time!=undefined){
           data=data.map((i)=>{
             i.time=moment(i.time).format('YYYY-MM-DD HH:mm:ss')
             return i

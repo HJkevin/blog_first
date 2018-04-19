@@ -23,7 +23,6 @@ const query = (sql) => {
 }
 
 // 读取操作
-<<<<<<< HEAD
 const readHandle=(sql)=>{
   return new Promise((resolve,reject)=>{
     query(sql).then((data)=>{
@@ -42,24 +41,6 @@ const readHandle=(sql)=>{
         reject(err)
       })
   })
-=======
-const readHandle = (sql) => {
-    return new Promise((resolve, reject) => {
-        query(sql).then((data) => {
-            // 转换时间；
-            if (data[0].time != undefined) {
-                data = data.map((i) => {
-                    i.time = moment(i.time).format('YYYY-MM-DD HH:mm:ss')
-                    return i
-                })
-            }
-            resolve(data);
-        }).catch((err) => {
-            console.log(err);
-            reject(err);
-        })
-    })
->>>>>>> ee0599be9563a84014d0472a8ad05da536f96e7a
 }
 // 检索判断数据库是否有此值(有值为false)
 const searchHandle = (sql) => {

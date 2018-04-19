@@ -11,13 +11,8 @@ var {
   query             // //基本操作
 }=require("../../config/db_connect")
 
-<<<<<<< HEAD
-// 插入一级类名
-router.post("/insertOneClass",(req,res,next)=>{
-=======
 
 router.post("/addOneClass",(req,res,next)=>{
->>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
   let {enname_one,cnname_one,enname_two,cnname_two}=req.body
     if(enname_one&&cnname_one&&enname_two&&cnname_two){
       let oneId=Unique()
@@ -28,11 +23,7 @@ router.post("/addOneClass",(req,res,next)=>{
           await sqlHandle(insertTwo);
           return {
             code:"2001",
-<<<<<<< HEAD
             msg:"一级数据插入成功"
-=======
-            msg:"插入成功"
->>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
           }
        }
        sqlAllHandle().then((data)=>{
@@ -40,17 +31,12 @@ router.post("/addOneClass",(req,res,next)=>{
        }).catch((err)=>{
           res.send({
             code:"2002",
-<<<<<<< HEAD
             msg:"一级数据插入失败"
-=======
-            msg:"插入失败"
->>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
           })
        })   
     }
 })
 
-<<<<<<< HEAD
 // 一级分类编辑
 router.post('/amendClassOne',(req,res,next)=>{
     const {enname_one,cnname_one,enname_two,cnname_two}=req.body
@@ -153,6 +139,3 @@ router.get("/getOneClass",(req,res,next)=>{
       })
     })
 })
-=======
-module.exports=router
->>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2

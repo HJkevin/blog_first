@@ -3,17 +3,10 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 
     export default{
       data(){
-<<<<<<< HEAD
         return {}
-=======
-        return {
-          
-        }
->>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
       }
     }
 </script>
@@ -35,7 +28,6 @@ a{
   color:#2c3e50;
 }
 </style>
-=======
 export default {
     data () {
         return {
@@ -62,4 +54,3 @@ export default {
         color:#2c3e50;
     }
 </style>
->>>>>>> ee0599be9563a84014d0472a8ad05da536f96e7a

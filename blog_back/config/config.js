@@ -32,29 +32,15 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static', //静态文件拷贝路径，注意这里使用相对dist文件夹的目录名
     assetsPublicPath: '/',
-<<<<<<< HEAD
     souceMap:"cheap-module-eval-source-map",
     proxyTable: {
-<<<<<<< HEAD
-      "/api":"http://localhost:9999/"
-=======
       "/api":"http://localhost:9999/" //解决了跨域问题
->>>>>>> abf50b7d1292dfeb41f1777aa17deccbb44bd1b2
     },
-    middleWare:function(app){
-        app.get("/api",function(req,res,next){
-          res.send("1234")
-        })
-=======
     souceMap: "cheap-module-eval-source-map",
-    proxyTable: {
-      "/api":"http://localhost:9999/"
-    },
     middleWare: function (app) {
       app.get("/api", function (req, res, next) {
         res.send("1234")
       })
->>>>>>> ee0599be9563a84014d0472a8ad05da536f96e7a
     }
   },
   babel: {

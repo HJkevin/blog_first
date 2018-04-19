@@ -46,11 +46,7 @@ module.exports = {
     extensions: ['.js', '.vue'],//省略后缀名
     alias: {
         "vue": "vue/dist/vue.js",
-<<<<<<< HEAD
         "@":path.join(__dirname,"../src")
-=======
-        "@": path.join(__dirname, '../src')
->>>>>>> ee0599be9563a84014d0472a8ad05da536f96e7a
     }
   },
   devtool: config.dev.souceMap, //开发环境推荐

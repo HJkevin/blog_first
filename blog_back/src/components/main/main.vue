@@ -1,19 +1,25 @@
 <template>
-  <div>
-      <h2>
-          欢迎来到个人博客后台管理系统
-      </h2>
-  </div>
+  <div >
+   这里是主页
+</div>
 </template>
 
 <script>
 export default {
-    name: 'back_main'
+  name: 'back_main',
+  data () {
+    return {
+		
+    }
+  },
+  methods:{
+    
+  }
+
 }
 </script>
 
-<style>
-    h2{
-        margin: 50px 20px;
-    }
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
 </style>

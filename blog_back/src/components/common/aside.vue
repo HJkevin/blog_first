@@ -4,6 +4,7 @@
         <template slot="title"><i class="el-icon-message"></i>文章操作</template>
           <el-menu-item index="1-1"><router-link to="/back/add_article">添加文章</router-link></el-menu-item>
           <el-menu-item index="1-2"><router-link to="/back/article_list">文章列表</router-link></el-menu-item>
+        
       </el-submenu>
       
       <el-submenu index="2">
@@ -42,7 +43,6 @@ export default {
         console.log(key, keyPath);
       }
     }
-  }
 }
 </script>
 

@@ -1,3 +1,7 @@
+
+// console.log(__dirname)
+// console.log(__filename)
+// console.log(process.cwd())
 var path=require("path")
 var webpack=require("webpack")
 var htmlWebpackPlugin=require("html-webpack-plugin")

@@ -1,13 +1,13 @@
 <template>
-   <div>
-        <p>个人博客</p>
+   <div class="header">
+        <h3>个人博客后台管理系统</h3>
         <p>用户姓名：{{username}}</p>
    </div>
 </template>
 
 <script>
 export default {
-  name: 'head',
+  name: 'heads',
   data () {
     return {
         username:""
@@ -22,17 +22,19 @@ export default {
 </script>
 
 <style scoped>
-  div{
+  .header{
     height: 50px;
+    line-height: 50px;
     background: lightblue;
     overflow: hidden;
-    line-height:50px;
     padding:0 20px;
   }
-  div p:first-child{
-    float: left
+  .header h3{
+    float: left;
+    height: 50px;
+    margin:0;
   }
-  div p{
+  .header p{
     float: right
   }
 

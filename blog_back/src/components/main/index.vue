@@ -35,6 +35,6 @@ export default {
 }
 .main .right{
   float: left;
-
+  width: 70%;
 }
 </style>

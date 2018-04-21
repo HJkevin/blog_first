@@ -11,7 +11,6 @@ var {
 
 
 /* GET home page. */
-
 router.post('/login', function(req, res, next) {
   let arg=req.body
   console.log(arg)

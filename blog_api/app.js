@@ -29,8 +29,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // 接口
-var apiUser=require("./api/back/user.js")
-app.use('/api/back/user', apiUser);
+
+
+var apiBackUser=require("./api/back/user.js")
+app.use('/api/back/user', apiBackUser);
+var apiBackClass=require("./api/back/class.js")
+app.use('/api/back/class', apiBackClass);
 
 
 

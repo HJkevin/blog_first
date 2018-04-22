@@ -5,9 +5,10 @@
 // import Vue from " vue/dist/vue.js ";
 import Vue from "vue"
 import router from "./router"
-import store from "./store"
+//import store from "./store"
 import "./directives/index"
 import "./components/register.js"
+
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -18,25 +19,32 @@ import axios from "axios"
 
 Vue.use(vueAxios,axios)
 
+// import './static/Ueditor/ueditor.config.js'
+// import './static/Ueditor/ueditor.all.min.js'
+// import './static/Ueditor/lang/zh-cn/zh-cn.js'
+// import './static/Ueditor/ueditor.parse.min.js'
+// import './static/Ueditor/ueditor.all.js'
 
-router.beforeEach((to,from,next)=>{
-  if(to.path=="/login"){
-    next()
-  }else{
-    if(sessionStorage.getItem("userId")){
-      next()
-    }else{
-      next("/login")
-    }
-  }
-})
 
 new Vue({
   el:"#root",
   router,
-  store,
+  //store,
   template:"<app />",
   components: {
       app: resolve => require(['./components/app.vue'], resolve)
   }
 })
+
+
+// router.beforeEach((to,from,next)=>{
+//   if(to.path=="/login"){
+//     next()
+//   }else{
+//     if(sessionStorage.getItem("userId")){
+//       next()
+//     }else{
+//       next("/login")
+//     }
+//   }
+// })

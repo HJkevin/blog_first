@@ -1,17 +1,20 @@
 <template>
-  <router-view></router-view>
+  <div>
+      <router-view></router-view>
+  </div>
+      
 </template>
 <script>
-
-    export default{
+  export default{
       data(){
-        return {}
+        return {
+          
+        }
       }
-    }
+  }
 </script>
-<style>
-
-#app {
+<style scoped>
+  #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

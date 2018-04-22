@@ -49,12 +49,7 @@ router.post("/insertOneClass",(req,res,next)=>{
     }
 })
 
-
-
-
 // 二级类名的添加
-
-
 router.post("/insertTwoClass",(req,res,next)=>{
   let {oneId,enname_two,cnname_two}=req.body
     if(oneId&&enname_two&&cnname_two){
@@ -80,11 +75,7 @@ router.post("/insertTwoClass",(req,res,next)=>{
     }
 })
 
-
-
 // 获取一级分类
-
-
 router.get("/getOneClass",(req,res,next)=>{
  
       var getOneClass=`select * from one_class`
@@ -164,7 +155,6 @@ router.post("/deleteClassOne",(req,res,next)=>{
 })
 
 // 二级分类删除最后一条，连带删除当前一级分类，当前文件表
-
 function deleteLastTwoClass(req,res,next){
   let {oneId,twoId,enname_one}=req.body
   let sqlone=`delete * from one_class where id='${oneId}'`
@@ -190,7 +180,6 @@ function deleteLastTwoClass(req,res,next){
 }
 
 // 二级分类删除不是最后一条，只删除二级分类和文章
-
 function deleteTwoClass(req,res,next){
   let {oneId,twoId,enname_one}=req.body
   let deleteTwo=`delete * from two_class where id='${twoId}'`
@@ -284,4 +273,6 @@ router.post("/amendClassTwo",(req,res,next)=>{
   } 
 })
 
+
+// 
 module.exports=router

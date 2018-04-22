@@ -11,15 +11,12 @@
                         <el-option v-for="item in oneClass" :key="item.id" :label="item.cnname" :value="item.id">
                         </el-option>
                     </el-select>
-
                 </el-form-item>
                 <el-form-item label="二级类名" prop="twoId">
                     <el-select v-model="ruleForm.twoId" placeholder="请选择" :clearable="true">
                         <el-option v-for="item in twoClass" :key="item.id" :label="item.cnname" :value="item.id">
                         </el-option>
                     </el-select>
-
-
                 </el-form-item>
                 <el-form-item label="是否显示" prop="art_show">
                     <el-radio class="radio" v-model="ruleForm.art_show" label="1">是</el-radio>
@@ -51,9 +48,7 @@
                 </el-form-item>
             </el-form>
         </div>
-
     </div>
-
 </template>
 
 <script>
@@ -75,7 +70,7 @@ export default {
       olddata: [],
       editer: null,
       ruleForm: {
-        article_name: "", //文章名字
+        article_name: "",
         oneId: "",
         twoId: "",
         editer: "",
@@ -126,12 +121,13 @@ export default {
       }
     };
   },
-  beforeCreate() {},
+  beforeCreate() {
+
+  },
   created() {
     this.axios.get("/api/back/class/class").then(data => {
       this.olddata = data.data.data;
 
-      console.log(data);
       this.oneClass = [...this.olddata.oneData];
 
       this.ruleForm.oneId = this.oneClass[0].id;
@@ -141,8 +137,7 @@ export default {
     });
   },
   mounted() {
-    // this.editor = UE.getEditor("editor");
-    // console.log(this)
+
   },
   methods: {
     changefn(data) {
@@ -169,8 +164,7 @@ export default {
       this.$refs[formName].validate(valid => {
         // if (valid && this.editor.getContent() != "") {
         // this.ruleForm.content = this.editor.getContent();
-        console.log(this.ruleForm);
-        // alert('submit!');
+        // console.log(this.ruleForm);
         this.axios.post("/api/back/class/insert", this.ruleForm).then(data => {
           if (data.data.code == "2091") {
             this.$message({

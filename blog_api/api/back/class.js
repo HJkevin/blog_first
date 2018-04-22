@@ -11,7 +11,6 @@ var {
   query             // //基本操作
 } = require("../../config/db_connect")
 
-
 // 一级类名的添加
 router.post("/insertOneClass", (req, res, next) => {
   let { enname_one, cnname_one, enname_two, cnname_two } = req.body

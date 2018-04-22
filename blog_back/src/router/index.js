@@ -7,9 +7,10 @@ Vue.use(vueRouter)
 let Login=resolve => require(['@/components/login.vue'], resolve)
 let backMain=resolve => require(['@/components/main/main.vue'], resolve)
 let back=resolve => require(['@/components/main/index.vue'], resolve)
-var add_one_class= resolve => require(['@/components/class/add_one_class'], resolve)
-var add_two_class= resolve => require(['@/components/class/add_two_class'], resolve)
-var classList= resolve => require(['@/components/class/classList'], resolve)
+let add_article=resolve => require(['@/components/main/add_article.vue'], resolve)
+let add_one_class=resolve => require(['@/components/main/add_one_class.vue'], resolve)
+let add_two_class=resolve => require(['@/components/main/add_two_class.vue'], resolve)
+let class_list=resolve => require(['@/components/main/class_list.vue'], resolve)
 export default new vueRouter({
    routes:[
      {
@@ -28,21 +29,18 @@ export default new vueRouter({
         {
           path:"main",
           component:backMain
-        },
-        {
-          path: 'add_one_class',
-          name: 'add_one_class',
-          component: add_one_class,
-        },
-        {
-          path: 'add_two_class',
-          name: 'add_two_class',
-          component: add_two_class,
-        },
-        {
-          path: 'class_list',
-          name: 'classList',
-          component: classList,
+        },{
+          path:"add_article",
+          component:add_article
+        },{
+          path:"add_one_class",
+          component:add_one_class
+        },{
+          path:"add_two_class",
+          component:add_two_class
+        },{
+          path:"class_list",
+          component:class_list
         }
       ]
      }

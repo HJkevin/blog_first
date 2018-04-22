@@ -26,7 +26,6 @@ export default {
     height: 50px;
     background: lightblue;
     overflow: hidden;
-    line-height:50px;
     padding:0 20px;
   }
   div h3{

@@ -80,28 +80,35 @@ export default {
   },
   methods: {
     getInitData() {
-      
+      this.axios.get("/api/back/article/getArticleList").then(data => {
+        console.log(data);
+        if (data.data.code == "3021") {
+          console.log(data.data.data);
+          this.olddata = data.data.data;
+          this.formData = this.olddata.slice(0, this.everyrows);
+        }
+      });
     },
     dbclick() {
       
     },
     handleEdit(index, row) {
-      
+
     },
     handleSizeChange(val) {
-      
+
     },
     handleCurrentChange(val) {
-      
+
     },
     handleDelete(index, row) {
-      
+
     },
     handleOK() {
-      
+
     },
     handleClose(done) {
-      
+
     }
   }
 };

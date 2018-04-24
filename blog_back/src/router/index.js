@@ -15,6 +15,10 @@ let amend_class = resolve => require(['@/components/class/amend_class.vue'], res
 let add_article=resolve => require(['@/components/article/add_article.vue'], resolve)
 let article_list=resolve => require(['@/components/article/article_list.vue'], resolve)
 
+let api_add=resolve => require(['@/components/api/api_add.vue'], resolve)
+let api_list=resolve => require(['@/components/api/api_list.vue'], resolve)
+let api_list_front=resolve => require(['@/components/api/api_list_front.vue'], resolve)
+
 export default new vueRouter({
   routes: [
     {
@@ -57,6 +61,16 @@ export default new vueRouter({
         {
           path:"article_list",
           component:article_list
+        },{
+          path:"api_add",
+          component:api_add
+        },
+        {
+          path:"api_list",
+          component:api_list
+        },{
+          path:"api_list_front",
+          component:api_list_front
         }
       ]
     }

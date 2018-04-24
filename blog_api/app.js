@@ -32,6 +32,7 @@ app.use('/users', usersRouter);
 // 接口
 var apiBackUser=require("./api/back/user.js")
 app.use('/api/back/user', apiBackUser);
+
 var apiBackClass=require("./api/back/class.js")
 app.use('/api/back/class', apiBackClass);
 
@@ -39,6 +40,11 @@ app.use('/api/back/class', apiBackClass);
 var apiBackArticle=require("./api/back/article.js")
 app.use('/api/back/article', apiBackArticle);
 app.use('/api/back', apiBackArticle)
+
+//接口
+var apiBackApi=require("./api/back/api.js")
+app.use('/api/back/api', apiBackApi);
+app.use('/api/back', apiBackApi)
 
 //使用模块
 app.use("/api/ue", ueditor(path.join(__dirname, 'public'), function(req, res, next) {

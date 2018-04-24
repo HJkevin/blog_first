@@ -9,7 +9,7 @@ module.exports = {
     dev_db: {
         host: "127.0.0.1",
         user: "root",
-        password: "319415",
+        password: "1q2w3e",
         port: 3306,
         database: "blog_sql"
     }

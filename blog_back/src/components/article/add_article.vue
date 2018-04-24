@@ -1,7 +1,7 @@
 <template>
     <div>
         <div style="width:700px">
-            <el-form :model="ruleForm" :rules="rules2" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
                 <h3>增加文章</h3>
                 <el-form-item label="文章标题" prop="article_name">
                     <el-input type="text" v-model="ruleForm.article_name" auto-complete="off"></el-input>
@@ -34,8 +34,7 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item label="时间" prop="times">
-                    <el-date-picker v-model="ruleForm.time" type="datetime" placeholder="选择日期时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"
-                        @change="changefn">
+                    <el-date-picker v-model="ruleForm.time" type="datetime" placeholder="选择日期时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss">
                     </el-date-picker>
                 </el-form-item>
                 <!--editor的div为富文本的承载容器-->
@@ -57,7 +56,7 @@ export default {
   data() {
     // 自定义校验
     var validatetime = (rule, value, callback) => {
-      console.log(this.ruleForm.time);
+      // console.log(this.ruleForm.time);
       if (this.ruleForm.time === "") {
         callback(new Error("请选择时间"));
       } else {
@@ -81,7 +80,7 @@ export default {
         art_show: "0",
         enname_one: ""
       },
-      rules2: {
+      rules: {
         article_name: [
           {
             required: true,
@@ -121,15 +120,14 @@ export default {
       }
     };
   },
-  beforeCreate() {
-
-  },
+  beforeCreate() {},
   created() {
     this.axios.get("/api/back/article/Class").then(data => {
       this.olddata = data.data.data;
 
-      this.oneClass = [...this.olddata.oneData];
-
+      // this.oneClass = [...this.olddata.oneData];
+      this.oneClass = data.data.data.oneData;
+      // 初始化
       this.ruleForm.oneId = this.oneClass[0].id;
       this.ruleForm.enname_one = this.oneClass[0].enname;
       // this.twoClass=data.data.data[1]
@@ -137,12 +135,9 @@ export default {
     });
   },
   mounted() {
-    this.editor = UE.getEditor('editor');
+    this.editor = UE.getEditor("editor");
   },
   methods: {
-    changefn(data) {
-      // this.ruleForm.time=data
-    },
     selectClassTwo() {
       this.twoClass = [];
       this.olddata.twoData.forEach(function(i) {
@@ -152,9 +147,9 @@ export default {
       }, this);
     },
     changeClassOne(item) {
-      console.log(item);
+      // console.log(item);
       this.olddata.oneData.forEach(function(i) {
-        if (i.id == item) {
+        if (i.id == this.ruleForm.oneId) {
           this.ruleForm.enname_one = i.enname;
         }
       }, this);
@@ -163,24 +158,27 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid && this.editor.getContent() != "") {
-        this.ruleForm.content = this.editor.getContent();
-        console.log(this.ruleForm);
-        this.axios.post("/api/back/article/insert", this.ruleForm).then(data => {
-          if (data.data.code == "3011") {
-            this.$message({
-              type: "success",
-              message: data.data.msg
+          this.ruleForm.content = this.editor.getContent();
+          console.log(this.ruleForm);
+          this.axios
+            .post("/api/back/article/insert", this.ruleForm)
+            .then(data => {
+              console.log(data);
+              if (data.data.code == "3011") {
+                this.$message({
+                  type: "success",
+                  message: data.data.msg
+                });
+                setTimeout(() => {
+                  this.$router.go(0);
+                }, 1000);
+              } else {
+                this.$message({
+                  type: "error",
+                  message: data.data.msg
+                });
+              }
             });
-            setTimeout(() => {
-              this.$router.go(0);
-            }, 1000);
-          } else {
-            this.$message({
-              type: "error",
-              message: data.data.msg
-            });
-          }
-        });
         } else {
           console.log("error submit!!");
           return false;
@@ -188,7 +186,7 @@ export default {
       });
     }
   },
-  destroyed(){
+  destroyed() {
     // 将editor进行销毁
     this.editor.destroy();
   }

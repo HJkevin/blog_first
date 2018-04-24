@@ -31,7 +31,7 @@
 
         //为编辑器实例添加一个路径，这个不能被注释
         UEDITOR_HOME_URL: URL,
-
+        // serverUrl: URL + "jsp/controller.jsp",
         // 服务器统一请求接口路径，配置的服务端接口
         // serverUrl: "http://127.0.0.1:9999/api/ue",
         // 如果使用了代理，则可以如下进行配置

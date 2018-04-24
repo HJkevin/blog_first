@@ -35,7 +35,8 @@ module.exports = {
     // souceMap:"cheap-module-eval-source-map",
     souceMap:false,
     proxyTable: {
-      "/api":"http://localhost:9999/"
+      "/api":"http://localhost:9999/",
+      "/ueditor": "http://localhost:9999/",
     },
     middleWare:function(app){
         app.get("/api",function(req,res,next){

@@ -52,7 +52,7 @@
         :visible.sync="dialogVisible"
         size="tiny"
         :before-close="handleClose">
-        <span>这是一段信息</span>
+        <span>您是否删除文章</span>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
           <el-button type="primary" @click="handleOK">确 定</el-button>
@@ -90,25 +90,71 @@ export default {
       });
     },
     dbclick() {
-      
+      this.$router.push({ name: "api_list_detail", params: { data: row } });
     },
     handleEdit(index, row) {
-
+      console.log(index, row);
+      // this.$router.push({ path: "/back/amend_article", query: { id: row.id } });
+      this.$router.push({ path: "/back/amend_article/"+ row.id });
     },
     handleSizeChange(val) {
-
+      console.log(`每页 ${val} 条`);
+      this.everyrows = val;
+      this.formData = this.olddata.slice(
+        (this.nowPage - 1) * this.everyrows,
+        this.everyrows * this.nowPage
+      );
     },
     handleCurrentChange(val) {
-
+      this.nowPage = val;
+      this.formData = this.olddata.slice(
+        (val - 1) * this.everyrows,
+        this.everyrows * val
+      );
+      console.log(this.everyrows);
+      console.log(`当前页: ${val}`);
     },
     handleDelete(index, row) {
+      this.dialogVisible = true;
 
+      this.id = row.id;
+      this.enname_one = row.enname_one;
+      this.twoId = row.twoId;
     },
     handleOK() {
+      this.axios
+        .post("/api/back/article/deleteArticle", {
+          twoId: this.twoId,
+          enname_one: this.enname_one,
+          id: this.id
+        })
+        .then(data => {
+          console.log(data);
+          if (data.data.code == "3041") {
+            this.$message({
+              showClose: true,
+              message: "恭喜你，删除成功",
+              type: "success"
+            });
+            this.getInitData();
+            // this.$router.go(0)
+          } else {
+            this.$message({
+              showClose: true,
+              message: "删除失败",
+              type: "error"
+            });
+          }
+        });
 
+      this.dialogVisible = false;
     },
     handleClose(done) {
-
+      this.$confirm("确认关闭？")
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
     }
   }
 };

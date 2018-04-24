@@ -1,21 +1,22 @@
 <template>
-    
-     <div class="classmain">
+      <div class="classmain">
          <el-table
           :data="formData"
           border
-          style="width: 800px" >
+          style="width: 800px" @row-dblclick.self="dbclick">
           <el-table-column
             label="标题"
             width="180">
             <template scope="scope">
+
               <span style="margin-left: 0px">{{ scope.row.title }}</span>
             </template>
           </el-table-column>
          <el-table-column
-            label="作者"
+            label="前后端分类"
             width="180">
             <template scope="scope">
+
               <span style="margin-left: 0px">{{ scope.row.backorfont }}</span>
             </template>
           </el-table-column>
@@ -23,6 +24,7 @@
             label="时间"
             width="180">
             <template scope="scope">
+
               <span style="margin-left: 0px">{{ scope.row.time }}</span>
             </template>
           </el-table-column>
@@ -52,19 +54,17 @@
         :visible.sync="dialogVisible"
         size="tiny"
         :before-close="handleClose">
-        <span>您确定删除</span>
+        <span>删除：{{deleteItem}}</span>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
           <el-button type="primary" @click="handleOK">确 定</el-button>
         </span>
       </el-dialog>
       </div>
-
 </template>
-
 <script>
 export default {
-  name: "api_list",
+  name: "index",
   data() {
     return {
       olddata: [],
@@ -72,47 +72,84 @@ export default {
       everyrows: 5,
       nowPage: 1,
       dialogVisible: false,
+      deleteItem: "",
       id: ""
     };
   },
   created() {
-    this.axios.get("/api/back/api/select").then((data) =>{
-        this.olddata=data.data.data
-        this.formData=this.olddata.slice(0,this.everyrows)
-    })
+    this.getData();
+  },
+  watch: {
+    $route() {
+      // console.log(22)
+      //   this.$router.go(0)
+      this.getData();
+    }
   },
   methods: {
-    handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-    handleCurrentChange(val) {
-    console.log(`当前页: ${val}`);
+    getData() {
+      const type = this.$route.query.type;
+      this.axios.get("/api/back/api/select?type=" + type).then(data => {
+        if (data.data.code == "4011") {
+          console.log(data.data.data);
+          this.olddata = data.data.data;
+          this.formData = this.olddata.slice(0, this.everyrows);
+        }
+      });
     },
-    handleOK(){
-        this.axios.post("/api/back/api/delete",{twoId:this.twoId,enname_one:this.enname_one,id:this.id}).then((data)=>{
-            console.log(data)
-            if(data.data.code=="3051"){
-              this.$message({
-                showClose: true,
-                message: '删除成功',
-                type: 'success'
-              })
-              this.getInitData()
-              this.$router.go(0)
-            }else{
-                this.$message({
-                showClose: true,
-                message: '删除失败',
-                type: 'error'
-              })
-            }
-            
-        })
-      
-      this.dialogVisible=false
+    dbclick(row) {
+      sessionStorage.setItem("apidetail", JSON.stringify(row));
+      this.$router.push({ name: "api_list_detail" });
+    },
+    handleEdit(index, row) {
+      sessionStorage.setItem("apiamend", JSON.stringify(row));
+      this.$router.push({ path: "/back/api_add", query: { type: "amend" } });
+    },
+
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+      this.everyrows = val;
+      this.formData = this.olddata.slice(
+        (this.nowPage - 1) * this.everyrows,
+        this.everyrows
+      );
+    },
+    handleCurrentChange(val) {
+      this.nowPage = val;
+      this.formData = this.olddata.slice(
+        (val - 1) * this.everyrows,
+        this.everyrows * val
+      );
+      console.log(this.everyrows);
+      console.log(`当前页: ${val}`);
+    },
+    handleDelete(index, row) {
+      this.dialogVisible = true;
+      this.deleteItem = row.title;
+      this.id = row.id;
+    },
+    handleOK() {
+      this.axios.post("/api/back/api/delete", { id: this.id }).then(data => {
+        console.log(data);
+        if (data.data.code == "4031") {
+          this.$message({
+            showClose: true,
+            message: "删除成功",
+            type: "success"
+          });
+          this.$router.go(0);
+        } else {
+          this.$message({
+            showClose: true,
+            message: "删除失败",
+            type: "error"
+          });
+        }
+      });
+      this.dialogVisible = false;
     },
     handleClose(done) {
-      this.$confirm('确认关闭？')
+      this.$confirm("确认关闭？")
         .then(_ => {
           done();
         })
@@ -122,7 +159,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

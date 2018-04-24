@@ -41,7 +41,7 @@ app.use('/api/back/article', apiBackArticle);
 // app.use('/api/back', apiBackArticle)
 
 //接口
-var apiBackApi=require("./api/back/api.js")
+var apiBackApi = require("./api/back/api.js")
 app.use('/api/back/api', apiBackApi);
 
 //使用模块

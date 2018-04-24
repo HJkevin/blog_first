@@ -36,69 +36,59 @@
 <script>
 export default {
   data() {
-      return {
-        ruleForm: {
-          title:'',
-          url:'',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: '',
-          types:'',
-          reqtype:''
-        },
-        rules: {
-          title: [
-            { required: true, message: '不能为空', trigger: 'blur' },
-          ],
-          url: [
-            { required: true, message: '不能为空', trigger: 'blur' },
-          ],
-          types: [
-            { required: true, message: '不能为空', trigger: 'change' }
-          ],
-          reqtype: [
-            { required: true, message: '不能为空', trigger: 'change' }
-          ],
-          reqparameters: [
-            { required: true, message: '不能为空', trigger: 'blur' }
-          ],
-          resdata: [
-            { required: true, message: '不能为空', trigger: 'blur' }
-          ]
-        }
-      };
-    },
-    methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.axios.post("/api/back/api/select",this.ruleForm).then((data) =>{
-                console.log(data)
-                if(data.data.code=='3031'){
-                 this.$message({
-                    showClose: true,
-                    message: '提交成功',
-                    type: 'success'
-                  });
-                }else{
-                    this.$message({
-                        showClose: true,
-                        message: '提交失败',
-                        type: 'error'
-                    });
-                }
-            })
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+    return {
+      ruleForm: {
+        title: "",
+        url: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+        types: "",
+        reqtype: ""
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+      rules: {
+        title: [{ required: true, message: "不能为空", trigger: "blur" }],
+        url: [{ required: true, message: "不能为空", trigger: "blur" }],
+        types: [{ required: true, message: "不能为空", trigger: "change" }],
+        reqtype: [{ required: true, message: "不能为空", trigger: "change" }],
+        reqparameters: [
+          { required: true, message: "不能为空", trigger: "blur" }
+        ],
+        resdata: [{ required: true, message: "不能为空", trigger: "blur" }]
       }
+    };
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.axios.post("/api/back/api/select", this.ruleForm).then(data => {
+            console.log(data);
+            if (data.data.code == "3031") {
+              this.$message({
+                showClose: true,
+                message: "提交成功",
+                type: "success"
+              });
+            } else {
+              this.$message({
+                showClose: true,
+                message: "提交失败",
+                type: "error"
+              });
+            }
+          });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     }
-}
+  }
+};
 </script>
 

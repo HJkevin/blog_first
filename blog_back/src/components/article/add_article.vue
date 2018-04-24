@@ -194,11 +194,5 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 20px 0 20px 40px;
-}
 
-#editor {
-  width: 800px;
-}
 </style>

@@ -170,55 +170,55 @@ router.post('/deletArticle', (req, res, next)=>{
 })
 
 
-// 根据id获取文章
-router.get('/getArticleDetail', function(req, res, next){
-  var sqlone = `select * from one_class`
+// // 根据id获取文章
+// router.get('/getArticleDetail', function(req, res, next){
+//   var sqlone = `select * from one_class`
 
-  // 拼接查询文章的sql
-  const connectSql = (oneClass) =>{
-    // 根据一级类名拼接sql
+//   // 拼接查询文章的sql
+//   const connectSql = (oneClass) =>{
+//     // 根据一级类名拼接sql
 
-    var selectArtSql = `select * from (`
-      oneClass.forEach(function(i, index){
-        if(index < (oneClass.length - 1)){// 不是最后一个
-          selectArtSql += `select * from ${i.enname} UNION ALL`
-        }else{
-          selectArtSql += `select * from ${i.enname}) as table_all where id = '${req.query.id}' order by time desc`
-        }
-      }, this);
-      return selectArtSql
-  }
-    // 经一级类名的中英文标识添加入文章列表
-    const connectArticle = (data) =>{
-      const {articleData, oneClass} = data
-      return articleData.map(function(i){
-        oneClass.forEach(function(j){
-          if(j.id == i.oneId) {
-            i.enname_one = j.enname
-            i.cnname_one = j.cnname
-          }
-        })
-        return i
-      });
-    }
-    const asyncGetArticle=async function(){
-      let oneClass=await  readHandle(sqlone)
-      let articleData=await  readHandle(connectSql(oneClass))
-      return connectArticle({articleData,oneClass})
-    }
-    asyncGetArticle().then((data)=>{
-        res.send({
-            code: "3051",
-            data,
-            msg: "查询成功"
-        })
-    }).catch((err)=>{
-        res.send({
-            code: "3052",
-            data: null,
-            msg: "查询失败"
-        })
-    })
-})
+//     var selectArtSql = `select * from (`
+//       oneClass.forEach(function(i, index){
+//         if(index < (oneClass.length - 1)){// 不是最后一个
+//           selectArtSql += `select * from ${i.enname} UNION ALL`
+//         }else{
+//           selectArtSql += `select * from ${i.enname}) as table_all where id = '${req.query.id}' order by time desc`
+//         }
+//       }, this);
+//       return selectArtSql
+//   }
+//     // 经一级类名的中英文标识添加入文章列表
+//     const connectArticle = (data) =>{
+//       const {articleData, oneClass} = data
+//       return articleData.map(function(i){
+//         oneClass.forEach(function(j){
+//           if(j.id == i.oneId) {
+//             i.enname_one = j.enname
+//             i.cnname_one = j.cnname
+//           }
+//         })
+//         return i
+//       });
+//     }
+//     const asyncGetArticle=async function(){
+//       let oneClass=await  readHandle(sqlone)
+//       let articleData=await  readHandle(connectSql(oneClass))
+//       return connectArticle({articleData,oneClass})
+//     }
+//     asyncGetArticle().then((data)=>{
+//         res.send({
+//             code: "3051",
+//             data,
+//             msg: "查询成功"
+//         })
+//     }).catch((err)=>{
+//         res.send({
+//             code: "3052",
+//             data: null,
+//             msg: "查询失败"
+//         })
+//     })
+// })
 
 module.exports = router

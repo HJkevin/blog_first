@@ -49,7 +49,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue'],//省略后缀名
-    alias: {
+    alias: {//配置路径
         "vue": "vue/dist/vue.js",
         "@":path.join(__dirname,"../src")
     }

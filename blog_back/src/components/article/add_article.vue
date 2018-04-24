@@ -39,9 +39,9 @@
                     </el-date-picker>
                 </el-form-item>
                 <!--editor的div为富文本的承载容器-->
-                <!-- <el-form-item label="内容" prop="">
+                <el-form-item label="内容" prop="">
                     <div id="editor"></div>
-                </el-form-item> -->
+                </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
                     <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -55,7 +55,6 @@
 export default {
   name: "add_article",
   data() {
-    // 自定义校验
     var validatetime = (rule, value, callback) => {
       console.log(this.ruleForm.time);
       if (this.ruleForm.time === "") {
@@ -121,9 +120,6 @@ export default {
       }
     };
   },
-  beforeCreate() {
-
-  },
   created() {
     this.axios.get("/api/back/class/class").then(data => {
       this.olddata = data.data.data;
@@ -132,17 +128,10 @@ export default {
 
       this.ruleForm.oneId = this.oneClass[0].id;
       this.ruleForm.enname_one = this.oneClass[0].enname;
-      // this.twoClass=data.data.data[1]
       this.selectClassTwo();
     });
   },
-  mounted() {
-
-  },
   methods: {
-    changefn(data) {
-      // this.ruleForm.time=data
-    },
     selectClassTwo() {
       this.twoClass = [];
       this.olddata.twoData.forEach(function(i) {
@@ -151,20 +140,8 @@ export default {
         }
       }, this);
     },
-    changeClassOne(item) {
-      console.log(item);
-      this.olddata.oneData.forEach(function(i) {
-        if (i.id == item) {
-          this.ruleForm.enname_one = i.enname;
-        }
-      }, this);
-      this.selectClassTwo();
-    },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
-        // if (valid && this.editor.getContent() != "") {
-        // this.ruleForm.content = this.editor.getContent();
-        // console.log(this.ruleForm);
         this.axios.post("/api/back/class/insert", this.ruleForm).then(data => {
           if (data.data.code == "2091") {
             this.$message({
@@ -181,10 +158,6 @@ export default {
             });
           }
         });
-        // } else {
-        //   console.log("error submit!!");
-        //   return false;
-        // }
       });
     }
   }

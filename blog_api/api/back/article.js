@@ -37,15 +37,15 @@ router.get("/class", (req, res, next) => {
 // 插入文章
 router.post("/insert", (req, res, next) => {
     let { enname_one, oneId, twoId, article_name, editer, content, time, daodu, imgsrc, recommend, art_show } = req.body;
-    var sql = `insert into ${enname_one}(id,oneId,twoId,article_name,editer,content,time,visitors,daodu,imgsrc,recommend,art_show) values('${generateUUID()}','${oneId}','${twoId}','${article_name}','${editer}','${content}','${time}',0,'${daodu}','${imgsrc}','${recommend}','${art_show}')`
+    var sql = `insert into ${enname_one}(id,oneId,twoId,article_name,editer,content,time,visitors,daodu,imgsrc,recommend,art_show) values('${Unique()}','${oneId}','${twoId}','${article_name}','${editer}','${content}','${time}',0,'${daodu}','${imgsrc}','${recommend}','${art_show}')`
     var updateArticalNum = `update two_class set article_num=article_num+1 where id='${twoId}'`
 
-    const asyncInsertArticle = async function () {
+    const addArticle = async function () {
         await sqlHandle(sql)
         await sqlHandle(updateArticalNum)
         return
     }
-    asyncInsertArticle().then((data) => {
+    addArticle().then((data) => {
         res.send({
             code: "2091",
             msg: "插入文章成功"

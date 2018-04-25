@@ -67,7 +67,7 @@
               <li class="qr-code">
                 <p>请扫二维码关注xz公众账号</p>
                 <div class="ewm">
-                  <img src="" alt="">
+                  <img src="../../static/image/xz.png" alt="">
                 </div>
               </li>
             </ul>
@@ -86,6 +86,9 @@
 <style scoped>
   .box{
     font-size: 50px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
   .top{
     width: 100%;
@@ -109,7 +112,6 @@
 
   .text-left{
      width: 65%;
-     text-align: center;
    }
   .text-left .article{
     font-size: 14px;
@@ -117,6 +119,7 @@
     background: blue;
     color: #fff;
     border-radius: 5px;
+  
   }
   .text-left dl{
     display: flex;
@@ -156,7 +159,7 @@
   }
  
   .text-right{
-    width: 40%;
+    width: 30%;
   }
   .text-right ul li{
     list-style: none;

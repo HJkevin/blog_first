@@ -11,6 +11,31 @@ var {
     query             // //基本操作
 } = require("../../config/db_connect")
 
+// 获取头部导航数据
+router.get("/getNav", function(req, res, next) {
+    var sqlone = "select * from one_class"
+    var sqltwo = "select * from two_class"
+    const asyncGetClass=async function(){
+        let oneClass=await  readHandle(sqlone)
+        let twoClass=await  readHandle(sqltwo)
+        return {oneClass,twoClass}
+    }
+
+    asyncGetClass().then((data)=>{
+        res.send({
+            code: "6010",
+            data: resdata,
+            msg: "查询成功"
+        })
+    }).catch((err)=>{
+        res.send({
+            code: "6011",
+            data: null,
+            msg: "查询失败"
+        })
+    })
+})
+
 // 前台获取所有可显示的文章接口
 router.get('/getArticleAll', (req, res, next)=>{
     var sqlone = `select * from one_class`

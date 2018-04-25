@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+    <div>
+      loding
+    </div>
 </template>
 <script>
 export default {
   data(){
       return{
-          
+
       }
   }
 }

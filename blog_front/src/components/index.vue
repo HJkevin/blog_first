@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="box">
       <div class="top">
         <span class="name">个人博客</span>
@@ -74,22 +73,17 @@
             </ul>
         </div>
       </div>
-=======
-  <div>
-    <router-view></router-view>
->>>>>>> 490b39f00bceec334ebea071ea932893aacfc7bc
+      
   </div>
+      
 </template>
 <script>
-export default {
-  data(){
-      return{
-          
-      }
+  export default{
+      // data(){
+      //   return {name:"zhangsan"}
+      // }
   }
-}
 </script>
-<<<<<<< HEAD
 <style scoped>
   .box{
     font-size: 50px;
@@ -191,6 +185,3 @@ export default {
     text-align: center;
   }
 </style>
-=======
-
->>>>>>> 490b39f00bceec334ebea071ea932893aacfc7bc

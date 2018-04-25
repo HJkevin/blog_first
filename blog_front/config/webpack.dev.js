@@ -50,7 +50,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],//省略后缀名
     alias: {
-        "vue": "vue/dist/vue.js"
+        "vue": "vue/dist/vue.js",
+        "@":path.join(__dirname,"../src")
     }
   },
   devtool: config.dev.souceMap, //开发环境推荐

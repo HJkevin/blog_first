@@ -9,10 +9,16 @@ Vue.use(ElementUI);
 
 import vueAxios from "vue-axios"
 import axios from "axios"
+
 Vue.use(vueAxios,axios)
 
-import Vuex from "vuex"
-Vue.use(Vuex)
+// router.beforeEach((to,from,next)=>{
+//   if(to.path=="/"){
+//     next()
+//   }else{
+//     console.log('数据请求失败')
+//   }
+// })
 
 new Vue({
   el:"#root",

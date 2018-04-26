@@ -6,6 +6,8 @@ Vue.use(vueRouter)
 let Loding = resolve => require(['@/components/Loding.vue'], resolve)
 let index = resolve => require(['@/components/index.vue'], resolve)
 
+Vue.prototype.bus=new Vue()
+
 export default new vueRouter({
   routes: [
     {

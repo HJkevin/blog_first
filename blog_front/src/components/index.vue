@@ -1,7 +1,7 @@
 <template>
   <div class="box">
       <div class="top">
-        <span class="name">个人博客</span>
+        <span class="name">个人博客{{classData}}</span>
         <p>
             <el-row>
             <el-button type="primary" plain>主要按钮</el-button>
@@ -78,10 +78,22 @@
       
 </template>
 <script>
+  import {mapState,mapActions} from 'vuex'
   export default{
-      // data(){
-      //   return {name:"zhangsan"}
-      // }
+      data(){
+        return {
+          name:"zhangsan",
+          classData: '1'
+        }
+      },
+      created(){
+        let data = this.$store.state.indexData
+        if(!data){
+          this.$router.push('/loding')
+        }else{
+          console.log(data)
+        }
+      }
   }
 </script>
 <style scoped>
